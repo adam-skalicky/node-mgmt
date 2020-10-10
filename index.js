@@ -11,6 +11,7 @@ const processServers = async () => {
   const startTime = Date.now();
   console.log('Proccessing servers.')
   for (const server of servers.servers) {
+    const startTimeServer = Date.now();
     console.log('Processing ' + server.hostname,)
     log.log('Connecting to: ' + server.hostname, 'info');
     const ssh = new NodeSSH();
@@ -39,10 +40,13 @@ const processServers = async () => {
       ssh.dispose();
       log.log('Disconnected from host: ' + server.hostname, 'info');
     }
-    const endTime = Date.now();
-    const duration = (endTime - startTime) / 1000;
-    console.log('Elapsed Time:' + duration + 's')
+    const endTimeServer = Date.now();
+    const durationServer = (endTimeServer - startTimeServer) / 1000;
+    console.log(server.hostname + ' elapsed Time: ' + durationServer + 's')
   }
+  const endTime = Date.now();
+  const duration = (endTime - startTime) / 1000;
+  console.log('Total elapsed Time: ' + duration + 's')
 }
 
 processServers()
