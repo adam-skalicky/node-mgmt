@@ -15,12 +15,12 @@ const processServers = async () => {
     console.log('Processing ' + server.hostname,)
     log.log('Connecting to: ' + server.hostname, 'info');
     const ssh = new NodeSSH();
+    try {
     await ssh.connect({
       host: server.hostname,
       username: server.username,
       privateKey: './id_rsa'
-    });
-    try {
+    }); 
       switch (server.type) {
         case 'ubuntu20':
           await ubuntu20.ubuntu20(ssh,server);
