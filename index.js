@@ -8,8 +8,9 @@ const servers = require('./config.json');
 
 
 const processServers = async () => {
-  console.log('proccessing servers')
+  console.log('Proccessing servers.')
   for (const server of servers.servers) {
+    console.log('Processing ' + server.hostname,)
     log.log('Connecting to: ' + server.hostname, 'info');
     const ssh = new NodeSSH();
     await ssh.connect({
