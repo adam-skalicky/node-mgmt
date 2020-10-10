@@ -6,6 +6,7 @@ const log = require('../../lib/log');
 module.exports.centos7 = async (ssh, server) => {
     const functions = server.subscribedFunctions;
     for (const functionName of functions) {
+        log.log('Evaluating function ' + functions, 'debug');
         switch(functionName) {
             case 'updateOS':
                 log.log('Updating - centos7', 'debug');
