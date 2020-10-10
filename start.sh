@@ -1,5 +1,5 @@
 #!/bin/bash
-
+repoRootDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )" 
 nodeDep=$(which node)
 if [ -z "$nodeDep" ];
     then 
@@ -18,7 +18,7 @@ if [ -z "$gitDep" ];
         echo "GIT not found, quiting!"
         exit 0
 fi
-
+cd $repoRootDir
 git pull
 
 npm install
