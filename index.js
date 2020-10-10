@@ -8,6 +8,7 @@ const servers = require('./config.json');
 
 
 const processServers = async () => {
+  const startTime = Date.now();
   console.log('Proccessing servers.')
   for (const server of servers.servers) {
     console.log('Processing ' + server.hostname,)
@@ -38,6 +39,9 @@ const processServers = async () => {
       ssh.dispose();
       log.log('Disconnected from host: ' + server.hostname, 'info');
     }
+    const endTime = Date.now();
+    const duration = (endTime - startTime) / 1000;
+    console.log('Elapsed Time:' + duration + 's')
   }
 }
 
