@@ -3,7 +3,7 @@
     "serverAuditLog": true,
     "servers": [
       {
-        "hostname": "mngrl01-sv1h.corp.scencdn.com",
+        "hostname": "example.corp.scencdn.com",
         "username": "root",
         "type": "ubuntu20",
         "subscribedFunctions": ["updateOS"]
