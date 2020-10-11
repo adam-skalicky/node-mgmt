@@ -5,7 +5,7 @@
       {
         "hostname": "example.corp.scencdn.com",
         "username": "root",
-        "type": "ubuntu20",
+        "distro": "ubuntu20",
         "subscribedFunctions": ["updateOS"]
       }
     ]
