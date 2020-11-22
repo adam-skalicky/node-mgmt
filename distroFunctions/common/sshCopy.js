@@ -8,7 +8,6 @@ module.exports.sshCopy = async (ssh) => {
     const pubKey = await fs.readFileSync('./id_rsa.pub', "utf8");
     let existingAuthorizedKeys
     await ssh.execCommand('cat ~/.ssh/authorized_keys').then((res) => (
-        log.serverOutput(res.stdout, serverName),
         existingAuthorizedKeys = res.stdout
         ))
     let authorizedKeyPresent = existingAuthorizedKeys.includes(pubKey)
