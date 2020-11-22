@@ -1,9 +1,10 @@
 const updateOS = require('./updateOS');
 const aptCleanup = require('./aptCleanup');
 const sshCopy = require('../common/sshCopy');
+const githubActions = require('./githubActions');
+
 const echo = require('../common/echo');
 const log = require('../../lib/log');
-
 
 module.exports.ubuntu20 = async (ssh, server) => {
     const functions = server.subscribedFunctions;
@@ -25,6 +26,11 @@ module.exports.ubuntu20 = async (ssh, server) => {
                 log.log('echoHello - ubuntu20', 'debug');
                 await echo.echoHello(ssh);
                 break;
+            case 'githubActions':
+                await githubActions.configureAgent(ssh);
+                break;
+
+                
             default:
                 log.log("Error: Unknown function: " + functionName,'error');
                 break;

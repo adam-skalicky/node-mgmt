@@ -1,6 +1,10 @@
 {
     "logLevel": "debug",
     "serverAuditLog": true,
+    "githubConfig": {
+      "token": "token",
+      "repoURL": "https://test.com/repo"
+    },
     "servers": [
       {
         "hostname": "example.corp.scencdn.com",
