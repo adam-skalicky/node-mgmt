@@ -6,7 +6,6 @@ module.exports.sshCopy = async (ssh) => {
     const serverName = ssh.connection.config.host;
     log.serverOutput('-Running: ' + 'sshCopy', serverName)
     const pubKey = await fs.readFileSync('./id_rsa.pub', "utf8");
-    log.serverOutput('-Running: ' + 'echo "hello"', serverName)
     let existingAuthorizedKeys
     await ssh.execCommand('cat ~/.ssh/authorized_keys').then((res) => (
         log.serverOutput(res.stdout, serverName),
