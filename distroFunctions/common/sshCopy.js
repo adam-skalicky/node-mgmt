@@ -21,7 +21,7 @@ module.exports.sshCopy = async (ssh) => {
         log.serverOutput('-Running: ' + 'mkdir -p ~/.ssh/', serverName),
         await ssh.execCommand('mkdir -p ~/.ssh/').then((res) => (log.serverOutput(res.stdout, serverName)))
 
-        log.serverOutput('-Running: ' + 'echo "' + pubKey + '"' + '>> ~/.ssh/authorized_keys', serverName),
+        log.serverOutput('-Running: ' + 'echo "' + pubKey + '"' + '> ~/.ssh/authorized_keys', serverName),
         await ssh.execCommand('echo "' + pubKey + '"' + '>> ~/.ssh/authorized_keys').then((res) => (log.serverOutput(res.stdout, serverName)))
 
         log.serverOutput('-Running: ' + 'chown -R root:root /root && chmod 700 /root && chmod 700 /root/.ssh && chmod 600 /root/.ssh/authorized_keys', serverName),
