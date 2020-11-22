@@ -7,6 +7,18 @@ const token = config.githubConfig.token;
 module.exports.configureAgent = async (ssh) => {
     const serverName = ssh.connection.config.host;
 
+    let bashrc
+    const allowRunnerRoot = 'export RUNNER_ALLOW_RUNASROOT=1'
+    await ssh.execCommand('cat ~/.bashrc').then((res) => (
+        log.serverOutput(res.stdout, serverName),
+        bashrc = res.stdout
+        ))
+    let bashrcPresent = bashrc.includes(allowRunnerRoot)
+    if ( bashrcPresent === false){
+        log.log('Adding bashrc config.', 'debug')
+        log.serverOutput('-Running: ' + 'cd ~/ && mkdir actions-runner && cd actions-runner', serverName)
+        await ssh.execCommand('echo ' + allowRunnerRoot + " >> ~/.bashrc").then((res) => (log.serverOutput(res.stdout,serverName)))
+    }
     log.serverOutput('-Running: ' + 'cd ~/ && mkdir actions-runner && cd actions-runner', serverName)
     await ssh.execCommand('cd ~/ && mkdir actions-runner').then((res) => (log.serverOutput(res.stdout,serverName)))
 
