@@ -13,7 +13,7 @@ module.exports.sshCopy = async (ssh) => {
         existingAuthorizedKeys = res.stdout
         ))
     let authorizedKeyPresent = existingAuthorizedKeys.includes(pubKey)
-    if ( authorizedKeyPresent === false){
+    if ( authorizedKeyPresent === true){
         log.log('Adding authorized key.', 'debug')
 
 
