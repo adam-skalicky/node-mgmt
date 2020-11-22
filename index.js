@@ -27,7 +27,7 @@ const processServers = async () => {
     }
     try {
     await ssh.connect(connector); 
-      switch (server.distro) {
+      switch (server.type) {
         case 'ubuntu20':
           await ubuntu20.ubuntu20(ssh,server);
           break;
