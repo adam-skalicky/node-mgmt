@@ -1,8 +1,8 @@
 const log = require('../../lib/log');
 const config = require('../../config.json');
 const currentVersion = "2.274.2"
-const repoURL = config.githubConf.repoURL;
-const token = config.githubConf.token;
+const repoURL = config.githubConfig.repoURL;
+const token = config.githubConfig.token;
 
 module.exports.configureAgent = async (ssh) => {
     const serverName = ssh.connection.config.host;
